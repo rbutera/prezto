@@ -3,6 +3,7 @@
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Rai Butera <rai@rbutera.com>
 #
 
 #
@@ -51,8 +52,8 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'homebrew' \
   'zsh-z' \
-  'contrib-clipboard' \
-  'contrib-enhancd'
+  'clipboard' \
+  'enhancd'
 
 #
 # Autosuggestions
