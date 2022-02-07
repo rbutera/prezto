@@ -242,8 +242,12 @@ zstyle ':prezto:module:prompt' theme 'spaceship'
 # behavior.
 zstyle ':prezto:module:utility' safe-ops 'yes'
 
+# Disable grep highlighting
+zstyle ':prezto:module:utility:grep' color 'no'
+
 
 # For contrib-enhancd
 
 zstyle ":prezto:module:enhancd" filter "fzy:fzf:peco"
 zstyle ":prezto:module:enhancd" command "cd"
+
