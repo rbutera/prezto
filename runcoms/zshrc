@@ -15,3 +15,5 @@ alias fix-spotlight="find . -type d -path './.*' -prune -o -path './Pictures*' -
 
 # finds the process using a particular port and kills it
 killport() {  local PORT=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $2 }'); kill -9 $PORT }
+
+eval "$(starship init zsh)"
