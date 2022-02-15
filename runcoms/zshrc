@@ -16,4 +16,13 @@ alias fix-spotlight="find . -type d -path './.*' -prune -o -path './Pictures*' -
 # finds the process using a particular port and kills it
 killport() {  local PORT=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $2 }'); kill -9 $PORT }
 
+alias rr="source ~/.zshrc; clear"
+
+# for remote ssh code
+# alias code="${VSCODE_GIT_ASKPASS_NODE%/*}/bin/code"
+# export PATH=${VSCODE_GIT_ASKPASS_NODE%/*}/bin:$PATH
+# export PATH=/Users/rai/bin:$PATH
+
+# starship prompt (should be last)
 eval "$(starship init zsh)"
+
