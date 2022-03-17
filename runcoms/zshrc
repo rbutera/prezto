@@ -41,7 +41,8 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-echo PATH=/users/rai/bin:$PATH
+path+=('/users/rai/bin')
+export PATH
 
 # starship prompt (should be last)
 eval "$(starship init zsh)"
