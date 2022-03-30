@@ -23,6 +23,7 @@ alias rr="source ~/.zshrc; clear"
 export PATH=${VSCODE_GIT_ASKPASS_NODE%/*}/bin/remote-cli:$PATH
 # export PATH=/Users/rai/bin:$PATH
 
+# START CURSOR TERMINAL FIX
 # formats cursor in terminal
 function zle-keymap-select () {
   case $KEYMAP in
@@ -32,6 +33,7 @@ function zle-keymap-select () {
 }
 
 zle -N zle-keymap-select
+
 zle-line-init() {
   zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
   echo -ne "\e[5 q"
@@ -41,8 +43,20 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+
+# END CURSOR TERMINAL FIX 
+
 path+=('/users/rai/bin')
 export PATH
+rcode() {
+  target_path=$1
+  code --folder-uri=scode-remote://ssh-remote+192.168.50.200/Users/rai/$target_path
+}
+
+alias code="code-insiders"
+
+# to enable ctrl+R in vi mode
+bindkey "^R" history-incremental-search-backward
 
 # starship prompt (should be last)
 eval "$(starship init zsh)"
