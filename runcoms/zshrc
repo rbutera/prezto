@@ -57,7 +57,6 @@ alias code="code-insiders"
 
 # for rdcli
 export REALDEBRID_USERNAME=rai@rbutera.com
-export REALDEBRID_PASSWORD=qY54HZ%777C$
 
 # to enable ctrl+R in vi mode
 bindkey "^R" history-incremental-search-backward
