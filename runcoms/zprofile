@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zprofile.pre.zsh"
 #
 # Executes commands at login pre-zshrc.
 #
@@ -64,3 +66,6 @@ fi
 
 export SPACESHIP_DIR_COLOR='yellow'
 # export SPACESHIP_USER_COLOR='cyan'
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zprofile.post.zsh"

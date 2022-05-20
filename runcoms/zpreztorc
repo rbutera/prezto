@@ -52,8 +52,7 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'homebrew' \
   'zsh-z' \
-  'clipboard' \
-  'enhancd'
+  'clipboard'
 
 #
 # Autosuggestions
@@ -248,6 +247,6 @@ zstyle ':prezto:module:utility:grep' color 'no'
 
 # For contrib-enhancd
 
-zstyle ":prezto:module:enhancd" filter "fzy:fzf:peco"
-zstyle ":prezto:module:enhancd" command "cd"
+# zstyle ":prezto:module:enhancd" filter "fzy:fzf:peco"
+# zstyle ":prezto:module:enhancd" command "cd"
 
