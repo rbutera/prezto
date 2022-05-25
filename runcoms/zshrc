@@ -65,15 +65,24 @@ export REALDEBRID_PASSWORD=qY54HZ%777C$
 bindkey "^R" history-incremental-search-backward
 
 # load aliases
-source ~/.aliases
+source ~/dotfiles/.aliases
 
 # load ssh agent
-# eval "$(ssh-agent -s)" > /dev/null
+if [ "x" == "x`ps -x -u ${USER} | egrep [s]sh-agent`" ] ; then
+	ssh-agent | sed -e "/^echo/d" > ${HOME}/bin/agent-env
+fi
+source ${HOME}/bin/agent-env
 
 # starship prompt (should be last)
 eval "$(starship init zsh)"
 
 export EDITOR=nvim
+
+# for pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 
 # Fig post block. Keep at the bottom of this file.
 . "$HOME/.fig/shell/zshrc.post.zsh"
@@ -84,3 +93,6 @@ export PATH="$PNPM_HOME:$PATH"
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+
+

@@ -250,3 +250,6 @@ zstyle ':prezto:module:utility:grep' color 'no'
 # zstyle ":prezto:module:enhancd" filter "fzy:fzf:peco"
 # zstyle ":prezto:module:enhancd" command "cd"
 
+
+
+
