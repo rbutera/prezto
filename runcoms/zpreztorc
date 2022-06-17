@@ -38,12 +38,12 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
-  'completion' \
   'git' \
   'contrib-prompt' \
   'prompt' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'python' \
   'node' \
   'helper' \
   'docker' \
@@ -52,6 +52,7 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'homebrew' \
   'zsh-z' \
+  'completion' \
   'clipboard'
 
 #
