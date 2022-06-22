@@ -1,3 +1,4 @@
+#
 # Executes commands at the start of an interactive session.
 #
 # Authors:
@@ -62,6 +63,10 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # END CURSOR TERMINAL FIX 
 
 path+=('/users/rai/bin')
+unamestr=$(uname)
+if [[ "$unamestr" == "Linux" ]]; then
+  path+=('/home/linuxbrew/.linuxbrew/bin')
+fi
 export PATH
 rcode() {
   target_path=$1
