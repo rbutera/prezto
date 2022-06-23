@@ -64,6 +64,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # END CURSOR TERMINAL FIX 
 
 path+=('/users/rai/bin')
+path+=('/users/rai/go/bin')
 unamestr=$(uname)
 if [[ "$unamestr" == "Linux" ]]; then
   path+=('/home/linuxbrew/.linuxbrew/bin')
