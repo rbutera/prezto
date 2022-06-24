@@ -92,6 +92,7 @@ bindkey "^R" history-incremental-search-backward
 source ~/.aliases
 
 export EDITOR=nvim
+export SUDO_EDITOR=nvim
 
 # for pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -103,6 +104,20 @@ eval "$(pyenv init -)"
 export PNPM_HOME="/Users/rai/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# from https://rabexc.org/posts/pitfalls-of-ssh-agents
+ssh-add -l &>/dev/null
+if [ "$?" == 2 ]; then
+  test -r ~/.ssh-agent && \
+    eval "$(<~/.ssh-agent)" >/dev/null
+
+  ssh-add -l &>/dev/null
+  if [ "$?" == 2 ]; then
+    (umask 066; ssh-agent > ~/.ssh-agent)
+    eval "$(<~/.ssh-agent)" >/dev/null
+    ssh-add
+  fi
+fi
 
 # tabtab source for packages
 # uninstall by removing these lines
