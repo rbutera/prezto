@@ -64,3 +64,8 @@ fi
 
 export SPACESHIP_DIR_COLOR='yellow'
 # export SPACESHIP_USER_COLOR='cyan'
+
+unamestr=$(uname)
+if [[ "$unamestr" == 'Linux' ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi

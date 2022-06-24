@@ -1,3 +1,4 @@
+#
 # Executes commands at the start of an interactive session.
 #
 # Authors:
@@ -11,19 +12,20 @@ fi
 
 # Handle Mac platforms
 CPU=$(uname -p)
-if [[ "$CPU" == "arm" ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
-    export EDITOR=/opt/homebrew/bin/nvim
-    export SUDO_EDITOR=/opt/homebrew/bin/nvim
-    alias nvim=/opt/homebrew/bin/nvim
-    alias oldbrew=/usr/local/bin/brew
-
-else
-    export PATH="/usr/local/bin:$PATH"
-    export EDITOR=/usr/local/bin/nvim
+unamestr=$(uname)
+if [[ "$unamestr" == "Darwin" ]]; then 
+  if [[ "$CPU" == "arm" ]]; then
+		export PATH="/opt/homebrew/bin:$PATH"
+		export EDITOR=/opt/homebrew/bin/nvim
+		export SUDO_EDITOR=/opt/homebrew/bin/nvim
+		alias nvim=/opt/homebrew/bin/nvim
+		alias oldbrew=/usr/local/bin/brew
+  else
+		export PATH="/usr/local/bin:$PATH"
+		export EDITOR=/usr/local/bin/nvim
     alias nvim=/usr/local/bin/nvim
+  fi
 fi
-
 
 # Customize to your needs...
 alias fix-spotlight="find . -type d -path './.*' -prune -o -path './Pictures*' -prune -o -path './Library*' -prune -o -path '*node_modules/*' -prune -o -type d -name 'node_modules' -exec touch '{}/.metadata_never_index' \; -print"
@@ -63,6 +65,14 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 path+=('/users/rai/bin')
 path+=('/users/rai/go/bin')
+unamestr=$(uname)
+if [[ "$unamestr" == "Linux" ]]; then
+  path+=('/home/linuxbrew/.linuxbrew/bin')
+  # For Loading the SSH key
+  /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
+  source $HOME/.keychain/$HOST-sh
+fi
+
 export PATH
 rcode() {
   target_path=$1
@@ -82,6 +92,7 @@ bindkey "^R" history-incremental-search-backward
 source ~/.aliases
 
 export EDITOR=nvim
+export SUDO_EDITOR=nvim
 
 # for pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -93,6 +104,20 @@ eval "$(pyenv init -)"
 export PNPM_HOME="/Users/rai/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# from https://rabexc.org/posts/pitfalls-of-ssh-agents
+ssh-add -l &>/dev/null
+if [ "$?" == 2 ]; then
+  test -r ~/.ssh-agent && \
+    eval "$(<~/.ssh-agent)" >/dev/null
+
+  ssh-add -l &>/dev/null
+  if [ "$?" == 2 ]; then
+    (umask 066; ssh-agent > ~/.ssh-agent)
+    eval "$(<~/.ssh-agent)" >/dev/null
+    ssh-add
+  fi
+fi
 
 # tabtab source for packages
 # uninstall by removing these lines
