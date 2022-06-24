@@ -106,18 +106,18 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 # from https://rabexc.org/posts/pitfalls-of-ssh-agents
-ssh-add -l &>/dev/null
-if [ "$?" == 2 ]; then
-  test -r ~/.ssh-agent && \
-    eval "$(<~/.ssh-agent)" >/dev/null
-
-  ssh-add -l &>/dev/null
-  if [ "$?" == 2 ]; then
-    (umask 066; ssh-agent > ~/.ssh-agent)
-    eval "$(<~/.ssh-agent)" >/dev/null
-    ssh-add
-  fi
-fi
+# ssh-add -l &>/dev/null
+# if [ "$?" == 2 ]; then
+  # test -r ~/.ssh-agent && \
+    # eval "$(<~/.ssh-agent)" >/dev/null
+#
+  # ssh-add -l &>/dev/null
+  # if [ "$?" == 2 ]; then
+    # (umask 066; ssh-agent -s > ~/.ssh-agent)
+    # eval "$(<~/.ssh-agent)" >/dev/null
+    # ssh-add
+  # fi
+# fi
 
 # tabtab source for packages
 # uninstall by removing these lines
