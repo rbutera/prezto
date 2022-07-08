@@ -53,6 +53,7 @@ zstyle ':prezto:load' pmodule \
   'homebrew' \
   'zsh-z' \
   'completion' \
+  'ssh' \
   'clipboard'
 
 #
@@ -175,7 +176,7 @@ zstyle ':prezto:module:prompt' theme 'spaceship'
 #
 
 # Set the SSH identities to load into the agent.
-# zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_rsa2' 'id_github'
+zstyle ':prezto:module:ssh:load' identities 'id_ed25519'
 
 #
 # Syntax Highlighting
